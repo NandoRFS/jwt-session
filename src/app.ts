@@ -1,8 +1,8 @@
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
-import * as defaultRoutes from './routes/healthcheck'
-import * as appRoutes from './routes/route'
+import * as defaultRoutes from './app/routes/healthcheck'
+import * as appRoutes from './app/routes/route'
 
 class App {
     public app: express.Application

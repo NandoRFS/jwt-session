@@ -1,11 +1,14 @@
-import * as mongoose from 'mongoose'
+const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://127.0.0.1/tccrest')
+mongoose.connect("mongodb://127.0.0.1:27017/tccrest", { useNewUrlParser:true, useUnifiedTopology: true })
 
-const mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb://localhost:27017/tccrest", { useNewUrlParser:true, useUnifiedTopology: true})
-  .then(conn => console.log(`Connected`))
-  .catch(err => console.log(err)) 
+mongoose.set('useCreateIndex', true)
+
+const db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'connection error:'))
+
+db.once('open', () => console.log(`Connected`))
 
 mongoose.Promise = global.Promise
 

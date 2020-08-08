@@ -1,6 +1,6 @@
 import * as express from 'express'
 
-const {version} = require('../../package.json')
+const {version} = require('../../../package.json')
 
 const router = express.Router()
 
