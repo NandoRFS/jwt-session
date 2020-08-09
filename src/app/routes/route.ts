@@ -17,6 +17,10 @@ router.post('/register', authController.createUser.bind(authController))
 
 router.post('/authenticate', authController.authenticate.bind(authController))
 
+router.post('/forgot-password', authController.forgotPassword.bind(authController))
+
+router.post('/reset-password', authController.resetPassword.bind(authController))
+
 router.use(authMiddleware)
 
 router.get('/needs-to-be-authenticated', needsToBeAuthenticatedController.getSomething.bind(needsToBeAuthenticatedController))
