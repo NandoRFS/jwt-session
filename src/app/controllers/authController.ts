@@ -76,6 +76,8 @@ export default class AuthController {
                 }
             })
 
+            console.log(user.email)
+
             mailer.sendMail({
                 to: user.email,
                 from: 'AppName <noreply@tcc.edu.br>',

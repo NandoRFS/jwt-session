@@ -1,0 +1,71 @@
+Entities
+
+user {
+	id: ObjectId,
+	email: String,
+	cpf: String
+}
+
+pharmacist_profile {
+	user_id: ObjectId,
+	name: String,
+	birth: String,
+	ctps: String,
+	position: String
+}
+
+patient_profile {
+	user_id: ObjectId,
+	name: String,
+	birth: String,
+	phone_number: String,
+	age: Number,
+	weight: Number,
+	address: {
+		zipcode: String,
+		street: String,
+		number: String,
+		district: String,
+		city: String,
+		state: String
+	},
+	medication: [
+		{
+			medication_id: ObjectId,
+			dose: String,
+			break_schedule: String, //intervalo intrajornada
+			instructions: String,
+			treatment: [
+				{
+					main_date: Date, //data/hora que deveria tomar
+					medicate_date: Date, //data/hora em que tomou
+					medicated: Boolean
+				}
+			]
+		}
+	],
+	withdrawal_history: [
+		{
+			medication: [
+				medication_id: ObjectId // medicamentos que retirou
+			]
+			schedule_date: Date, //data próxima retirada
+			pick_date: Date, //data em que retirou
+			late: Boolean //atrasado
+		}
+	]
+}
+
+medication {
+	id: ObjectId,
+	name: String,
+	company: String,
+	amount: String,
+	patient_leaflet: String, //url?
+	professional_leaflet: String //url?
+}
+
+tips {
+	title: String,
+	description: String
+}
