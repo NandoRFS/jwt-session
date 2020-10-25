@@ -1,4 +1,5 @@
 import Patient from '../models/patient'
+import User from '../models/user'
 
 export default class PatientService {
     
@@ -41,7 +42,13 @@ export default class PatientService {
         try {
             let patient = await Patient.find()
 
+            for(let p of patient) {
+                let user = await User.findOne({_id: p.user})
+                patient[patient.indexOf(p)].user = user
+            }
+
             return patient
+            
         } catch(e) {
             console.log(e)
             throw e

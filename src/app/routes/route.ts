@@ -23,6 +23,8 @@ router.get('/version', (req, res) => {
 
 router.post('/register', authController.createUser.bind(authController))
 
+router.post('/register/:id', authController.update.bind(authController))
+
 router.post('/authenticate', authController.authenticate.bind(authController))
 
 router.post('/forgot-password', authController.forgotPassword.bind(authController))

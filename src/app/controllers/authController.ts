@@ -31,6 +31,19 @@ export default class AuthController {
         }
     }
 
+    public async update(req: any, res: any) {
+        try {
+            await User.updateOne({_id: req.params.id}, req.body)
+
+            let user = await User.findOne({_id: req.params.id})
+
+            return res.json({user})
+        } catch(e) {
+            console.log(e)
+            return res.status(400).send({error: e})
+        }
+    }
+
     public async authenticate(req: any, res: any) {
         try {
             const { cpf, password } = req.body
