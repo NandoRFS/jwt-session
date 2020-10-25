@@ -30,6 +30,9 @@ export default class PatientService {
     public async get(id: any) {
         try {
             let patient = await Patient.findOne({_id: id})
+            
+            let user = await User.findOne({_id: patient.user})
+            patient.user = user
 
             return patient
         } catch(e) {
