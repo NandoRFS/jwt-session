@@ -1,4 +1,5 @@
 import Pharmacist from '../models/pharmacist'
+import User from '../models/user'
 
 export default class PharmacistService {
     
@@ -29,7 +30,8 @@ export default class PharmacistService {
     public async get(id: any) {
         try {
             let pharmacist = await Pharmacist.findOne({_id: id})
-
+            let user = await User.findOne({_id: pharmacist.user})
+            pharmacist.user = user
             return pharmacist
         } catch(e) {
             console.log(e)
@@ -40,7 +42,12 @@ export default class PharmacistService {
     public async getAll() {
         try {
             let pharmacist = await Pharmacist.find()
-
+            
+            for(let p of pharmacist) {
+                let user = await User.findOne({_id: p.user})
+                pharmacist[pharmacist.indexOf(p)].user = user
+            }
+            
             return pharmacist
         } catch(e) {
             console.log(e)
@@ -50,7 +57,10 @@ export default class PharmacistService {
 
     public async delete(id: any) {
         try {
+            let pharmacist = await Pharmacist.findOne({_id: id})
+
             await Pharmacist.deleteOne({_id: id})
+            await User.deleteOne({_id: pharmacist.user})
 
             return {success: true}
         } catch(e) {
