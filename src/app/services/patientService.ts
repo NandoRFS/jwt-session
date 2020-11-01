@@ -1,5 +1,6 @@
 import Patient from '../models/patient'
 import User from '../models/user'
+import Medication from '../models/medication'
 
 export default class PatientService {
     
@@ -33,6 +34,11 @@ export default class PatientService {
             
             let user = await User.findOne({_id: patient.user})
             patient.user = user
+
+            // for(let m of patient.medication) {
+            //     let medication = await Medication.findOne({_id: m.medication_id})
+            //     patient.medication[patient.medication.indexOf(m)].medication_id = medication
+            // }
 
             return patient
         } catch(e) {

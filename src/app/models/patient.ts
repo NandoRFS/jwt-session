@@ -31,24 +31,35 @@ const PatientSchema = new mongoose.Schema({
 				{
 					main_date: Date, //data/hora que deveria tomar
 					medicate_date: Date, //data/hora em que tomou
-					medicated: Boolean
+					medicated: Boolean // tomou no dia
 				}
-			]
-		}
-	],
-	withdrawal_history: [
-		{
-			medication: [
-				{
-					type: mongoose.Schema.Types.ObjectId,
-					ref: 'Medication'
-				} // medicamentos que retirou
 			],
 			schedule_date: Date, //data próxima retirada
 			pick_date: Date, //data em que retirou
-			late: Boolean //atrasado
+			last_pick: {
+				type: Boolean,
+				default: false
+			}
+			// history: [
+			// 	{
+			// 		schedule_date: Date, //data próxima retirada
+			// 		pick_date: Date, //data em que retirou
+			// 		late: Boolean //atrasado
+			// 	}
+			// ]
 		}
 	],
+	// withdrawal_history: [
+	// 	{
+	// 		medication: {
+	// 			type: mongoose.Schema.Types.ObjectId,
+	// 			ref: 'Medication'
+	// 		}, // medicamentos que retirou
+	// 		schedule_date: Date, //data próxima retirada
+	// 		pick_date: Date, //data em que retirou
+	// 		late: Boolean //atrasado
+	// 	}
+	// ],
     createdAt: {
         type: Date,
         default: Date.now
