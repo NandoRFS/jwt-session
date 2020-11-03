@@ -42,6 +42,17 @@ export default class PharmacistController {
         }
     }
 
+    public async getPharmacistByUser(req: any, res: any) {
+        try {
+            let pharmacist = await this._pharmacistService.getByUser(req.params.userid)
+
+            return res.json({pharmacist})
+        } catch(e) {
+            console.log(e)
+            return res.status(400).send({error: e})
+        }
+    }
+
     public async getAllPharmacist(req: any, res: any) {
         try {
             let pharmacist = await this._pharmacistService.getAll()

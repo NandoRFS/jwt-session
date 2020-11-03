@@ -47,6 +47,8 @@ router.get('/pharmacist', pharmacistController.getAllPharmacist.bind(pharmacistC
 
 router.get('/pharmacist/:id', pharmacistController.getPharmacist.bind(pharmacistController))
 
+router.get('/pharmacist/user/:userid', pharmacistController.getPharmacistByUser.bind(pharmacistController))
+
 router.delete('/pharmacist/:id', pharmacistController.deletePharmacist.bind(pharmacistController))
 
 // TIPS

@@ -39,6 +39,21 @@ export default class PharmacistService {
         }
     }
 
+    public async getByUser(id: any) {
+        try {
+            console.log('\n\nPHARMACIST: ', id, '\n\n')
+
+            let pharmacist = await Pharmacist.findOne({user: id})
+            console.log('\n\nPHARMACIST: ', pharmacist, '\n\n')
+            let user = await User.findOne({_id: pharmacist.user})
+            pharmacist.user = user
+            return pharmacist
+        } catch(e) {
+            console.log(e)
+            throw e
+        }
+    }
+
     public async getAll() {
         try {
             let pharmacist = await Pharmacist.find()
