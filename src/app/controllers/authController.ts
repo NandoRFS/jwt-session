@@ -1,5 +1,6 @@
 import User from '../models/user'
 import prhtml from '../views/emails/passwordRecovery'
+import PatientService from '../services/patientService'
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -8,11 +9,34 @@ const mailer = require('../../modules/mailer')
 const authConfig = require('../../config/auth')
 
 export default class AuthController {
+    private _patientService: any
 
+    constructor() {
+        this._patientService = new PatientService()
+    }
+    
     public generateToken(params = {}) {
         return jwt.sign(params, authConfig.secret, {
             expiresIn: 36000
         })
+    }
+
+    public async getUserByCpf(req: any, res: any) {
+        try {
+            let user = await this._patientService.getAll()
+
+            console.log(user)
+            user = user.filter(u => u.user.cpf == req.params.cpf)
+            if(user.length > 0) {
+                user = user[0]
+                return res.json({user})
+            } else {
+                return res.status(400).send({error: 'Usuá não encontrado!'})
+            }
+        } catch(e) {
+            console.log(e)
+            return res.status(400).send({error: e})
+        }
     }
     
     public async createUser(req: any, res: any) {
@@ -33,6 +57,18 @@ export default class AuthController {
 
     public async update(req: any, res: any) {
         try {
+            
+            if(req.body.password) {
+                const user = await User.findOne({ _id:  req.params.id})
+
+                user.password = req.body.password
+                user.passwordRegistered = true
+
+                await user.save()
+
+                return res.json({user})
+            }
+
             await User.updateOne({_id: req.params.id}, req.body)
 
             let user = await User.findOne({_id: req.params.id})
