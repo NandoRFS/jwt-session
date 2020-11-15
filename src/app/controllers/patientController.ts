@@ -42,6 +42,17 @@ export default class PatientController {
         }
     }
 
+    public async getPatientByUser(req: any, res: any) {
+        try {
+            let patient = await this._patientService.getByUser(req.params.userid)
+            console.log('PACIENTE', patient)
+            return res.json({patient})
+        } catch(e) {
+            console.log(e)
+            return res.status(400).send({error: e})
+        }
+    }
+
     public async getAllPatient(req: any, res: any) {
         try {
             let patient = await this._patientService.getAll()

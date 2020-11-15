@@ -87,6 +87,8 @@ router.get('/patient', patientController.getAllPatient.bind(patientController))
 
 router.get('/patient/:id', patientController.getPatient.bind(patientController))
 
+router.get('/patient/user/:userid', patientController.getPatientByUser.bind(patientController))
+
 router.delete('/patient/:id', patientController.deletePatient.bind(patientController))
 
 export = router
