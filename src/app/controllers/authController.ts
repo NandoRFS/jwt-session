@@ -25,7 +25,6 @@ export default class AuthController {
         try {
             let user = await this._patientService.getAll()
 
-            console.log(user)
             user = user.filter(u => u.user.cpf == req.params.cpf)
             if(user.length > 0) {
                 user = user[0]
@@ -125,7 +124,6 @@ export default class AuthController {
                 }
             })
 
-            console.log(user.email)
 
             mailer.sendMail({
                 to: user.email,

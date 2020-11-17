@@ -66,10 +66,8 @@ export default class PatientService {
 
     public async getByUser(id: any) {
         try {
-            console.log('\n\nPATIENT ID: ', id, '\n\n')
 
             let patient = await Patient.findOne({user: id})
-            console.log('\n\npatient: ', patient, '\n\n')
             let user = await User.findOne({_id: patient.user})
             patient.user = user
             return patient

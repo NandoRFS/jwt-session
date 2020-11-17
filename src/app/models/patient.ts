@@ -31,7 +31,10 @@ const PatientSchema = new mongoose.Schema({
 				{
 					main_date: Date, //data/hora que deveria tomar
 					medicate_date: Date, //data/hora em que tomou
-					medicated: Boolean // tomou no dia
+					medicated: {
+						type: Boolean,
+						default: false
+					} // tomou no dia
 				}
 			],
 			schedule_date: Date, //data próxima retirada

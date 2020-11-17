@@ -41,10 +41,7 @@ export default class PharmacistService {
 
     public async getByUser(id: any) {
         try {
-            console.log('\n\nPHARMACIST: ', id, '\n\n')
-
             let pharmacist = await Pharmacist.findOne({user: id})
-            console.log('\n\nPHARMACIST: ', pharmacist, '\n\n')
             let user = await User.findOne({_id: pharmacist.user})
             pharmacist.user = user
             return pharmacist

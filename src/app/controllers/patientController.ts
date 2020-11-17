@@ -45,7 +45,6 @@ export default class PatientController {
     public async getPatientByUser(req: any, res: any) {
         try {
             let patient = await this._patientService.getByUser(req.params.userid)
-            console.log('PACIENTE', patient)
             return res.json({patient})
         } catch(e) {
             console.log(e)
