@@ -1,6 +1,6 @@
-import User from '../models/user'
+import User from './userModel'
 import prhtml from '../views/emails/passwordRecovery'
-import PatientService from '../services/patientService'
+import PatientService from '../patient/patientService'
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')

@@ -1,5 +1,5 @@
 {
-  "name": "tcc-api-app",
+  "name": "jwt-session",
   "version": "1.0.0",
   "description": "Simple Nodejs with moongoDB app",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NandoRFS/tcc-api-app.git"
+    "url": "git+https://github.com/NandoRFS/jwt-session.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NandoRFS/tcc-api-app/issues"
+    "url": "https://github.com/NandoRFS/jwt-session/issues"
   },
-  "homepage": "https://github.com/NandoRFS/tcc-api-app#readme",
+  "homepage": "https://github.com/NandoRFS/jwt-session#readme",
   "dependencies": {
     "@types/express-session": "^1.17.0",
     "@types/node": "^14.0.27",

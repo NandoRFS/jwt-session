@@ -1,8 +1,7 @@
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
-import * as defaultRoutes from './app/routes/healthcheck'
-import * as appRoutes from './app/routes/route'
+import * as appRoutes from './routes/route'
 
 const cors = require('cors');
 
@@ -13,7 +12,6 @@ class App {
         this.app = express()
         this.middleware()
         this.protectedRoutes()
-        this.unProtectedRoutes()
     }
 
     middleware() {
@@ -26,10 +24,6 @@ class App {
 
     protectedRoutes() {
         this.app.use('/', appRoutes)
-    }
-
-    unProtectedRoutes() {
-        this.app.use('/', defaultRoutes)
     }
 
 }

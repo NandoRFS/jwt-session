@@ -1,4 +1,4 @@
-import PatientService from '../services/patientService'
+import PatientService from './patientService'
 
 export default class PatientController {
     private _patientService: any
