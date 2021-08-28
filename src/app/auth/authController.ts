@@ -127,7 +127,7 @@ export default class AuthController {
 
             mailer.sendMail({
                 to: user.email,
-                from: 'AppName <noreply@tcc.edu.br>',
+                from: 'AppName <noreply@someservice.com.br>',
                 html: prhtml(token, user.name)
 
             }, (err) => {

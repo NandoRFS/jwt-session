@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://127.0.0.1:27017/tccrest", { useNewUrlParser:true, useUnifiedTopology: true })
+mongoose.connect("mongodb://127.0.0.1:27017/restApi", { useNewUrlParser:true, useUnifiedTopology: true })
 
 mongoose.set('useCreateIndex', true)
 
